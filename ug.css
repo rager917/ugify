@@ -1,0 +1,23 @@
+html {
+	direction: rtl;
+}
+table {
+	direction: rtl;
+}
+.table td {
+	text-align: right;
+}
+
+.nav-tabs>li {
+	float: right;
+}
+
+.table th {
+	text-align: center;
+}
+.table-nonfluid {
+   width: auto !important;
+}
+form table {
+	direction: ltr;
+}

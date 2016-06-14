@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+<div class="container">
+	 <div class="row">
+		<table id="personal_details" class="table">
+			<tr><td id="name"/><td id="track"/></tr>
+			<tr><td id="id"/><td id="degree"/></tr>
+		</table> 
+	</div>
+	<div class="row">
+		<div class="container-fluid" style="float: right;">
+			<nav class="navbar-header">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a data-toggle="pill" href="#courses">קורסים</a></li>
+					<li role="presentation"><a data-toggle="pill" href="#semesters">סמסטרים</a></li>
+					<li role="presentation"><a data-toggle="pill" href="#original">מקור</a></li>
+					<li><span>נקודות </span><span id="total_points"/></li>
+					<li><span>הצלחות </span><span id="total_success"/>%</li>
+					<li><span>ממוצע </span><span id="total_average"/></li>
+					<li><div id="date" class="well well-sm"></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="page-content-wrapper" class="tab-content">
+			 <div id="courses" class="tab-pane in active"> 
+				 <table id="unified" class="table table-bordered table-condensed table-nonfluid" style="width: 5%;">
+					 <tr><th>#</th><th>מס"ד</th><th>מקצוע</th><th>שם מקצוע</th><th>נק.</th><th>ציון</th><th>סטטוס</th><th>מחדש</th></tr>
+					 <tbody id="unified_body"/>
+				 </table> 
+			</div>
+			<div id="semesters" class="tab-pane">
+				 <table id="summaries" class="table table-bordered table-striped table-condensed table-nonfluid" style="width: 5%;">
+					<tr><th>#</th><th>סמסטר</th><th>נק.</th><th>הצלחות</th><th>ממוצע</th></tr>
+					<tbody id="summaries_body"/>
+				</table>
+			</div>
+			<div id="original" class="tab-pane"/>
+		</div>
+	</div>
+</div>
+</body>
+</html>
