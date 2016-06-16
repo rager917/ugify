@@ -1,5 +1,5 @@
 # ugify
-Chrome extension: pretty display of the Technion grade-sheet
+Chrome extension: pretty display for the [Technion grade-sheet](http://ug3.technion.ac.il/Tadpis.html)
 
 [Available at the webstore](https://chrome.google.com/webstore/detail/bgdphblhdngheddjhkiojiilhaadoedo?utm_source=chrome-app-launcher-info-dialog)
 
