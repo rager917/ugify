@@ -1,7 +1,9 @@
 # ugify
 Chrome extension: pretty display of the Technion grade-sheet
 
-Important files:
+[Available at the webstore](https://chrome.google.com/webstore/detail/bgdphblhdngheddjhkiojiilhaadoedo?utm_source=chrome-app-launcher-info-dialog)
+
+## Important files
 
 `backcground.js`: manipulates the headers, to get the right charset/encoding
 
@@ -11,3 +13,8 @@ Important files:
 
 `*.html`: layouts for the new pages
 
+## Related
+
+Gai Shaked's [system](http://technion.ac.il/~gai/cm/)
+
+Course metadata as JSON file: https://github.com/elazarg/ug-data
