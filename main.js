@@ -189,11 +189,13 @@ function setupLogin() {
 	});
 }
 
-if (document.title !== 'Grades') {
-	document.title = 'Grades';
-	setupLogin();
-} else {
-	run();
+if (window.location.pathname.startsWith('/cics/wmn/wmngrad')) {
+	if (document.title !== 'Grades') {
+		document.title = 'Grades';
+		setupLogin();
+	} else {
+		run();
+	}
 }
 
 }

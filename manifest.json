@@ -4,7 +4,7 @@
 	"name": "UGify",
 	"short_name": "UGify",
 	"description": "הצגה נקיה של גיליון הציונים הטכניוני",
-	"version": "0.1.4",
+	"version": "0.2.0",
 	"minimum_chrome_version": "50",
 	
 	"icons": {
@@ -18,11 +18,11 @@
 	"background": {
         "scripts": ["background.js"],
         "persistent": true,
-        "matches": ["http://techmvs.technion.ac.il/*"]
+        "matches": ["http://techmvs.technion.ac.il/cics/wmn/wmngrad*"]
     },
 	"content_scripts": [
 		{
-			"matches": ["http://techmvs.technion.ac.il/*"],
+			"matches": ["http://techmvs.technion.ac.il/cics/wmn/wmngrad*"],
 			"all_frames" : true,
 			"css": ["bootstrap.min.css", "ug.css"],
 			"js": ["jquery-2.2.3.min.js", "bootstrap.min.js", "main.js"]
