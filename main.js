@@ -31,12 +31,14 @@ function reverseChildren(_, elem) {
 function prepareToParse() {
 	$('script').detach();
 	$('tr').each(reverseChildren);
-	$('td').each(reverseHebrew);
+// This is probably something that used to be necessary, but now doesn't seem.
+//  $('td').each(reverseHebrew);
 
 	
 	$('table:eq(0)').detach();
 	$('div:eq(0)').append($('font p').children());
-	$('font').detach();
+	// This is probably something that used to be necessary, but now doesn't seem.
+//	$('font').detach();
 	$('div table:eq(0)').addClass('details');
 	$('div table:eq(1)').addClass('summary');
 	$('div table:eq(2)').addClass('credits');
@@ -71,6 +73,15 @@ function prepareToParse() {
 	return true;
 }
 
+function cleanToRow(c) {
+	return ( '<tr>'
+		+ '<td class="course_id">' + (c.course_id || "") + '</td>'
+		+ '<td class="course_name">' + c.name + '</td>'
+		+ '<td class="points">' + c.points + '</td>'
+		+ '<td class="grade">' + c.grade + '</td>'
+	+ '</tr>');
+}
+
 function examToRow(e) {
 	return (
 	'<tr class="exams ' + (e.semester_id % 2 ? 'info' : '') + '">'
@@ -95,6 +106,7 @@ function totalToRow(t) {
 		+ '</tr>');
 }
 
+
 function examrowToExam(global_count) {
 	const semester_id = $(this).attr('semester_id');
 	const semester = $(this).attr('semester');
@@ -113,6 +125,7 @@ function examrowToExam(global_count) {
 			course_id, status, grade, points, name, retaken};
 }
 
+
 function totalrowToTotal() {
 	const semester_id = $(this).attr('semester_id');
 	const semester = $(this).attr('semester');
@@ -124,7 +137,7 @@ function totalrowToTotal() {
 
 function extractData() {
 	const [date, id, name, track, degree] = $("table.details tr td.details_content").map(getText);
-	const [total_average, total_success, total_points] = $('table.summary tr.numeral td').map(getText);
+	const [total_average, total_success, total_points] = $('table.summary tr.numeral td').map(getText);	
 	return {
 		exams: $("tr.exams").map(examrowToExam),
 		totals: $("tr.total").map(totalrowToTotal),
@@ -134,13 +147,39 @@ function extractData() {
 	};
 }
 
+function getCleanGradesFromExams(exams) {
+	var clean = []
+	var dirty_exams = exams.get()
+	var found = 0;
+	for(var i = 0; i < dirty_exams.length; i++) {
+		for(var j = 0; j < clean.length; j++) {
+			if(clean[j].course_id == dirty_exams[i].course_id && dirty_exams[i].grade != '') {
+				clean[j] = dirty_exams[i];
+				found = 1;
+			}
+		}
+		if(!found && dirty_exams[i].grade != '')
+			clean.push(dirty_exams[i]);
+		found = 0;
+	}
+	var rclean = clean.reverse();
+	return rclean;
+}
+
+
 function rearrangeDocument(exams, totals, details, summary) {
 	const original = $('body > div').html();
 	console.log(original);
 	withFile("ug.html", function(data) {
 		$('html').html(data); 
 		
-		for (const e of exams)		
+		
+		var clean = getCleanGradesFromExams(exams);
+		for (const c of clean) 
+			$('#clean_grades_body').prepend(cleanToRow(c));
+		
+		var rexams = exams.get().reverse()
+		for (const e of rexams)		
 			$('#unified_body').prepend(examToRow(e));
 		
 		for (const t of totals)

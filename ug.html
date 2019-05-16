@@ -18,6 +18,7 @@
 					<li role="presentation" class="active"><a data-toggle="pill" href="#courses">קורסים</a></li>
 					<li role="presentation"><a data-toggle="pill" href="#semesters">סמסטרים</a></li>
 					<li role="presentation"><a data-toggle="pill" href="#original">מקור</a></li>
+					<li role="presentation"><a data-toggle="pill" href="#clean">נקי</a></li>
 					<li><span>נקודות </span><span id="total_points"/></li>
 					<li><span>הצלחות </span><span id="total_success"/>%</li>
 					<li><span>ממוצע </span><span id="total_average"/></li>
@@ -39,6 +40,12 @@
 				</table>
 			</div>
 			<div id="original" class="tab-pane"/>
+			<div id="clean" class="tab-pane">
+				 <table id="clean_grades" class="table table-bordered table-condensed table-nonfluid" style="width: 5%;">
+					 <tr><th>מקצוע</th><th>שם מקצוע</th><th>נק.</th><th>ציון</th></tr>
+					<tbody id="clean_grades_body"/>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

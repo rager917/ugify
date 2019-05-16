@@ -18,11 +18,11 @@
 	"background": {
         "scripts": ["background.js"],
         "persistent": true,
-        "matches": ["http://techmvs.technion.ac.il/cics/wmn/wmngrad*"]
+        "matches": ["https://techmvs.technion.ac.il/cics/wmn/wmngrad*"]
     },
 	"content_scripts": [
 		{
-			"matches": ["http://techmvs.technion.ac.il/cics/wmn/wmngrad*"],
+			"matches": ["https://techmvs.technion.ac.il/cics/wmn/wmngrad*"],
 			"all_frames" : true,
 			"css": ["bootstrap.min.css", "ug.css"],
 			"js": ["jquery-2.2.3.min.js", "bootstrap.min.js", "main.js"]
